@@ -4,12 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecommendMachine {
+public class CategoryRecommender {
     private static final int MINIMUM = 1;
     private static final int MAXIMUM = 5;
     private static final int DUPLICATE_LIMIT = 2;
 
-    public List<String> recommendCategory() {
+    public List<String> recommend() {
         List<String> categories = new ArrayList<>();
         while (categories.size() < MAXIMUM) {
             String category = readCategory();

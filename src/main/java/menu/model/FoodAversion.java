@@ -28,7 +28,7 @@ public class FoodAversion {
 
     private List<String> readOneFood(String input) {
         List<String> foodAversions = new ArrayList<>();
-        if (!foodAversionIsInMenu(input)) {
+        if (!isInMenu(input)) {
             throw new IllegalArgumentException(ErrorMessage.FOOD_OUT_OF_MENU.getMessage());
         }
         foodAversions.add(input);
@@ -64,13 +64,13 @@ public class FoodAversion {
 
     private void validateFoodAversionIsInMenu(List<String> foodAversions) {
         for (String food : foodAversions) {
-            if (!foodAversionIsInMenu(food)) {
+            if (!isInMenu(food)) {
                 throw new IllegalArgumentException(ErrorMessage.FOOD_OUT_OF_MENU.getMessage());
             }
         }
     }
 
-    private boolean foodAversionIsInMenu(String food) {
+    private boolean isInMenu(String food) {
         for (FoodCategory foodCategory : FoodCategory.values()) {
             if (foodCategory.getMenu().contains(food)) {
                 return true;

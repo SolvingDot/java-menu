@@ -39,4 +39,13 @@ public enum FoodCategory {
         }
         throw new IllegalArgumentException("숫자와 일치하는 카테고리가 없습니다.");
     }
+
+    public static List<String> getMenuByCategory(String category) {
+        for (FoodCategory foodCategory : FoodCategory.values()) {
+            if (foodCategory.getCategory().equals(category)) {
+                return foodCategory.getMenu();
+            }
+        }
+        throw new IllegalArgumentException("일치하는 카테고리가 없습니다.");
+    }
 }
