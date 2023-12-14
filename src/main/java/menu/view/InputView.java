@@ -11,15 +11,14 @@ public class InputView {
     private InputView() {
     }
 
-    public String readMainOption() {
-        System.out.println(Message.INPUT_MAIN_OPTION.message);
-        String input = Console.readLine();
-        return input;
+    public String readName() {
+        System.out.println(Message.INPUT_NAME.message);
+        return Console.readLine();
     }
 
 
     private enum Message {
-        INPUT_MAIN_OPTION("메인 옵션");
+        INPUT_NAME("코치의 이름을 입력해 주세요. (, 로 구분)");
 
         private final String message;
 
