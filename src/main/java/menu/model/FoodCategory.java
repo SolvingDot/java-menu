@@ -1,6 +1,7 @@
 package menu.model;
 
 import java.util.List;
+import menu.view.ErrorMessage;
 
 public enum FoodCategory {
     JAPANESE("일식", 1, List.of("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")),
@@ -37,7 +38,7 @@ public enum FoodCategory {
                 return foodCategory.getCategory();
             }
         }
-        throw new IllegalArgumentException("숫자와 일치하는 카테고리가 없습니다.");
+        throw new IllegalArgumentException(ErrorMessage.MISMATCH_NUMBER.getMessage());
     }
 
     public static List<String> getMenuByCategory(String category) {
@@ -46,6 +47,6 @@ public enum FoodCategory {
                 return foodCategory.getMenu();
             }
         }
-        throw new IllegalArgumentException("일치하는 카테고리가 없습니다.");
+        throw new IllegalArgumentException(ErrorMessage.MISMATCH_CATEGORY.getMessage());
     }
 }

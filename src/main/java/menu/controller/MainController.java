@@ -19,25 +19,15 @@ public class MainController {
         this.outputView = outputView;
     }
 
-    public void play() {
-        outputView.printGameStart();
-
-        // 코치 이름을 입력한다.
+    public void startRecommendation() {
+        outputView.printRecommendationStart();
         List<String> coachNames = readNames();
-
-        // 각 코치가 못 먹는 메뉴를 입력한다.
         Map<String, List<String>> aversionTable = readFoodAversions(coachNames);
-        System.out.println(aversionTable);
 
-        // 카테고리를 추천한다.
-        CategoryRecommender categoryRecommender = new CategoryRecommender();
-        List<String> categories = categoryRecommender.recommend();
-        System.out.println(categories);
-
-        // 메뉴를 추천한다.
-        MenuRecommender menuRecommender = new MenuRecommender(aversionTable, categories);
-        Map<String, List<String>> recommendedMenu = menuRecommender.recommend();
-        System.out.println(recommendedMenu);
+        List<String> categories = recommendCategory();
+        Map<String, List<String>> recommendedMenu = recommendMenu(aversionTable, categories);
+        outputView.printRecommendationResult(categories, recommendedMenu);
+        outputView.printRecommendationFinish();
     }
 
     private List<String> readNames() {
@@ -69,5 +59,16 @@ public class MainController {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    private List<String> recommendCategory() {
+        CategoryRecommender categoryRecommender = new CategoryRecommender();
+        return categoryRecommender.recommend();
+    }
+
+    private Map<String, List<String>> recommendMenu(Map<String, List<String>> aversionTable,
+                                                    List<String> categories) {
+        MenuRecommender menuRecommender = new MenuRecommender(aversionTable, categories);
+        return menuRecommender.recommend();
     }
 }

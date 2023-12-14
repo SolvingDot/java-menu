@@ -14,7 +14,7 @@ public class MenuRecommender {
         this.aversionTable = aversionTable;
         this.categories = categories;
     }
-    
+
     public Map<String, List<String>> recommend() {
         Map<String, List<String>> recommendedMenu = makeInitialTable();
         recommendForEachDays(recommendedMenu);

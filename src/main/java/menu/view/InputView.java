@@ -5,20 +5,25 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
     private static final InputView instance = new InputView();
 
-    public static InputView getInstance(){
+    public static InputView getInstance() {
         return instance;
     }
+
     private InputView() {
     }
 
     public String readName() {
         System.out.println(Message.INPUT_NAME.message);
-        return Console.readLine();
+        String input = Console.readLine();
+        System.out.println();
+        return input;
     }
 
     public String readFoodAversion(String name) {
         System.out.println(String.format(Message.INPUT_FOOD_AVERSION.message, name));
-        return Console.readLine();
+        String input = Console.readLine();
+        System.out.println();
+        return input;
     }
 
     private enum Message {

@@ -9,8 +9,6 @@ public class Util {
     }
 
     private enum Regex {
-        SPACE(" "), NO_SPACE(""),
-        SQUARE_BRACKETS_START("["), SQUARE_BRACKETS_END("]"),
         COMMA(",");
 
         private final String regex;
@@ -18,8 +16,5 @@ public class Util {
         Regex(String regex) {
             this.regex = regex;
         }
-    }
-
-    private Util() {
     }
 }
